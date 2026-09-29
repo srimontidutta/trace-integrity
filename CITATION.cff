@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Trace Integrity for LLM Data Agents: A Vision for Auditable Structured Reasoning in Real-World Systems"
+type: software
+authors:
+  - family-names: "Dutta"
+    given-names: "Srimonti"
+  - family-names: "Moharir"
+    given-names: "Akshata Kishore"
+year: 2026
+url: "https://arxiv.org/abs/2608.26036"
+identifiers:
+  - type: url
+    value: "https://arxiv.org/abs/2608.26036"
+    description: "arXiv abstract page"
+preferred-citation:
+  type: article
+  title: "Trace Integrity for LLM Data Agents: A Vision for Auditable Structured Reasoning in Real-World Systems"
+  authors:
+    - family-names: "Dutta"
+      given-names: "Srimonti"
+    - family-names: "Moharir"
+      given-names: "Akshata Kishore"
+  year: 2026
+  url: "https://arxiv.org/abs/2608.26036"
