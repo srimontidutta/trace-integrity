@@ -1,0 +1,4 @@
+method,n_correct,n_correct_invalid,cait_rate_pct,exact_95_ci_lower_pct,exact_95_ci_upper_pct
+Direct SQL,20,11,55.0,31.5,76.9
+Operation Summary + SQL,22,13,59.1,36.4,79.3
+Contract-First SQL,24,11,45.8,25.6,67.2

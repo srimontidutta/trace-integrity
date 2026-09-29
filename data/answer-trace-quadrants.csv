@@ -1,0 +1,13 @@
+method,answer_correct,trace_valid,count
+Direct SQL,true,true,9
+Direct SQL,true,false,11
+Direct SQL,false,true,30
+Direct SQL,false,false,50
+Operation Summary + SQL,true,true,9
+Operation Summary + SQL,true,false,13
+Operation Summary + SQL,false,true,34
+Operation Summary + SQL,false,false,44
+Contract-First SQL,true,true,13
+Contract-First SQL,true,false,11
+Contract-First SQL,false,true,27
+Contract-First SQL,false,false,49

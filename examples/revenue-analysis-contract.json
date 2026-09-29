@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-revenue-analysis",
+  "intent": "Identify the region with the highest average revenue per active customer last quarter, excluding trial accounts.",
+  "schema_commitments": {
+    "tables": ["customers", "revenue"],
+    "columns": ["customers.customer_id", "customers.region", "customers.status", "customers.account_type", "revenue.customer_id", "revenue.amount", "revenue.date"],
+    "joins": ["customers.customer_id = revenue.customer_id"],
+    "filters": ["customers.status = 'active'", "customers.account_type != 'trial'"],
+    "group_by": ["customers.region"],
+    "metrics": ["SUM(revenue.amount) / COUNT(DISTINCT customers.customer_id)"],
+    "ordering": ["metric DESC"],
+    "limits": ["1"],
+    "temporal_constraints": ["revenue.date in last_quarter"]
+  },
+  "plan": [
+    {"step": 1, "operation": "filter", "detail": "Keep active, non-trial customers and revenue from the requested quarter."},
+    {"step": 2, "operation": "join", "detail": "Join customers and revenue by customer_id."},
+    {"step": 3, "operation": "group_by", "detail": "Group by customer region."},
+    {"step": 4, "operation": "compute_metric", "detail": "Compute revenue per distinct active customer."},
+    {"step": 5, "operation": "sort_desc", "detail": "Order regions by the computed metric."},
+    {"step": 6, "operation": "top_1", "detail": "Return the highest-ranked region."}
+  ],
+  "assumptions": ["The deployment defines last_quarter for the relevant reporting calendar."],
+  "value_access": {"used_before_plan": false, "reason": null, "plan_change": null},
+  "execution": {"artifact_type": "sql", "artifact": "", "status": "not_run", "data_snapshot": null, "environment": null, "result_reference": null},
+  "final_answer": {"text": null, "result_reference": null},
+  "trace_integrity": {
+    "explicit": {"status": "pass", "basis": "The record contains the requested filters, join, grouping, metric, ordering, temporal constraint, and limit."},
+    "executable": {"status": "not_assessed", "basis": "No executable SQL is attached to this pre-execution example."},
+    "schema_valid": {"status": "not_assessed", "basis": "Schema validation requires the deployment schema."},
+    "operator_faithful": {"status": "pass", "basis": "The recorded operations match the stated computation."},
+    "replayable": {"status": "not_assessed", "basis": "Replay requires an executed artifact and recorded data state."},
+    "answer_consistent": {"status": "not_assessed", "basis": "No final answer has been produced."},
+    "auditable": {"status": "pass", "basis": "The main computational commitments are retained in structured fields."},
+    "overall_status": "indeterminate"
+  }
+}

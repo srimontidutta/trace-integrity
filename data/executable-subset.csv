@@ -1,0 +1,4 @@
+method,n_executable,n_trace_integrity_pass,trace_integrity_pass_among_executable_pct
+Direct SQL,84,39,46.4
+Operation Summary + SQL,83,43,51.8
+Contract-First SQL,82,40,48.8

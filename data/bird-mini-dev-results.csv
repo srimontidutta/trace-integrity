@@ -1,0 +1,4 @@
+method,n_examples,answer_accuracy_pct,execution_success_pct,trace_integrity_pass_pct,answer_trace_consistency_pct,cait_rate_pct
+Direct SQL,100,20.0,84.0,39.0,84.0,55.0
+Operation Summary + SQL,100,22.0,83.0,43.0,67.0,59.1
+Contract-First SQL,100,24.0,82.0,40.0,82.0,45.8

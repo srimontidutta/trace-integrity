@@ -1,0 +1,8 @@
+dimension,check,deployment_failure_exposed
+Explicit,"The trace records the computational commitments needed to answer the request.","The answer omits the measure, grouping key, filter set, time window, join path, or another material commitment."
+Executable,"The trace contains a query, program, or structured plan that can be run or deterministically checked.","Only a free-text rationale is stored, leaving no executable artifact to validate or replay."
+Schema-valid,"Referenced tables, columns, join keys, and fields exist in the available schema.","The trace binds the request to a field that does not exist or has the wrong meaning."
+Operator-faithful,"The operations preserve the user's intended computation.","The trace uses the wrong aggregation, grouping, join, filter, ordering, temporal rule, or limit."
+Replayable,"Re-execution under the same data snapshot and execution environment yields the same result.","The answer depends on hidden state, unlogged tool output, or an unspecified data snapshot."
+Answer-consistent,"The final response follows from the executed trace.","The executed result and reported answer diverge."
+Auditable,"A reviewer or validation system can inspect the computation, assumptions, and failure mode.","Only the final answer is stored or the computational record is too incomplete to review."

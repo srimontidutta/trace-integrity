@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "request_id": "replace-with-request-id",
+  "intent": "Describe the requested structured-data computation.",
+  "schema_commitments": {
+    "tables": [],
+    "columns": [],
+    "joins": [],
+    "filters": [],
+    "group_by": [],
+    "metrics": [],
+    "ordering": [],
+    "limits": [],
+    "temporal_constraints": []
+  },
+  "plan": [
+    {
+      "step": 1,
+      "operation": "replace-with-operation",
+      "detail": ""
+    }
+  ],
+  "assumptions": [],
+  "value_access": {
+    "used_before_plan": false,
+    "reason": null,
+    "plan_change": null
+  },
+  "execution": {
+    "artifact_type": "sql",
+    "artifact": "",
+    "status": "not_run",
+    "data_snapshot": null,
+    "environment": null,
+    "result_reference": null
+  },
+  "final_answer": {
+    "text": null,
+    "result_reference": null
+  },
+  "trace_integrity": {
+    "explicit": {"status": "not_assessed", "basis": ""},
+    "executable": {"status": "not_assessed", "basis": ""},
+    "schema_valid": {"status": "not_assessed", "basis": ""},
+    "operator_faithful": {"status": "not_assessed", "basis": ""},
+    "replayable": {"status": "not_assessed", "basis": ""},
+    "answer_consistent": {"status": "not_assessed", "basis": ""},
+    "auditable": {"status": "not_assessed", "basis": ""},
+    "overall_status": "not_assessed"
+  }
+}

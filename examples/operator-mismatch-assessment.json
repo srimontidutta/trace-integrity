@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-aggregation-mismatch",
+  "intent": "Identify the region with the highest average revenue per active customer last quarter, excluding trial accounts.",
+  "schema_commitments": {
+    "tables": ["customers", "revenue"],
+    "joins": ["customers.customer_id = revenue.customer_id"],
+    "filters": ["customers.status = 'active'", "customers.account_type != 'trial'"],
+    "group_by": ["customers.region"],
+    "metrics": ["SUM(revenue.amount) / COUNT(DISTINCT customers.customer_id)"],
+    "ordering": ["metric DESC"],
+    "limits": ["1"],
+    "temporal_constraints": ["revenue.date in last_quarter"]
+  },
+  "plan": [
+    {"step": 1, "operation": "filter"},
+    {"step": 2, "operation": "join"},
+    {"step": 3, "operation": "group_by"},
+    {"step": 4, "operation": "compute_metric"},
+    {"step": 5, "operation": "sort_desc"},
+    {"step": 6, "operation": "top_1"}
+  ],
+  "assumptions": [],
+  "value_access": {"used_before_plan": false, "reason": null, "plan_change": null},
+  "execution": {
+    "artifact_type": "sql",
+    "artifact": "SELECT c.region, SUM(r.amount) AS revenue FROM customers c JOIN revenue r ON c.customer_id = r.customer_id WHERE c.status = 'active' AND c.account_type != 'trial' GROUP BY c.region ORDER BY revenue DESC LIMIT 1;",
+    "status": "succeeded",
+    "data_snapshot": "example-snapshot",
+    "environment": "example-sql-engine",
+    "result_reference": "result-1"
+  },
+  "final_answer": {"text": "Region A", "result_reference": "result-1"},
+  "trace_integrity": {
+    "explicit": {"status": "pass", "basis": "The contract records the intended measure, filters, join, grouping, and ranking."},
+    "executable": {"status": "pass", "basis": "The SQL executed successfully."},
+    "schema_valid": {"status": "pass", "basis": "The example assumes all referenced schema elements exist."},
+    "operator_faithful": {"status": "fail", "basis": "The executed SQL computes total revenue rather than revenue per active customer."},
+    "replayable": {"status": "pass", "basis": "The example records an execution environment and data-snapshot identifier."},
+    "answer_consistent": {"status": "pass", "basis": "The final answer is linked to the recorded execution result."},
+    "auditable": {"status": "pass", "basis": "The intended metric and executed SQL are retained for comparison."},
+    "overall_status": "fail"
+  }
+}
